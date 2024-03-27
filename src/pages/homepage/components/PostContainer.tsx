@@ -16,11 +16,14 @@ const PostContainer = () => {
     getData();
   }, []);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-      {data.map((item, index) => (
-        // <span key={index}>{item.title}</span>
-        <PostItem key={index} {...item} />
-      ))}
+    <div className="flex flex-col gap-4">
+      <span className="text-base font-bold">Latest Post</span>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {data.map((item, index) => (
+          // <span key={index}>{item.title}</span>
+          <PostItem key={index} {...item} />
+        ))}
+      </div>
     </div>
   );
 };

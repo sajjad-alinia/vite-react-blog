@@ -7,7 +7,7 @@ const PostItem = ({ id, title, image, content, expand, created }: TPost) => {
       <img
         src={import.meta.env.VITE_IMAGE_URL + "/posts/" + id + "/" + image}
         alt={title}
-        className="w-full h-[250px] rounded-lg"
+        className="object-cover object-center w-full h-[200px] rounded-lg"
       />
       <span className="bg-blue-500 text-white py-1 px-4 w-fit rounded-md text-sm">{expand.category[0].title}</span>
       <span className="text-2xl font-bold">{title}</span>
