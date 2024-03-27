@@ -5,7 +5,7 @@ const PostItem = ({ id, title, image, content, expand }: TPost) => {
   return (
     <Link to={"/postInfo/" + id} className="flex flex-col gap-2 p-2 border rounded-md ">
       <img
-        src={"https://blog-react.liara.run/api/files/posts/" + id + "/" + image}
+        src={import.meta.env.VITE_IMAGE_URL + "/posts/" + id + "/" + image}
         alt={title}
         className="w-full h-[250px] rounded-lg"
       />

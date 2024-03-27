@@ -4,9 +4,10 @@ import { TPost } from "../../../types/types";
 
 const PostContainer = () => {
   const [data, setData] = useState<TPost[]>([]);
+
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("https://blog-react.liara.run/api/collections/posts/records?expand=category,author");
+      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records?expand=category,author");
 
       const resJson = await res.json();
       setData(resJson.items);
