@@ -12,7 +12,7 @@ const PostInfoContainer = ({ id, image, title, expand, content }: TPostContainer
         className="w-full h-[400px] object-cover object-center rounded-lg"
       />
       <p dangerouslySetInnerHTML={{ __html: content }}>{}</p>
-      <AuthorSection {...expand.author} />
+      {expand && <AuthorSection {...expand.author} />}
     </div>
   );
 };
