@@ -5,7 +5,7 @@ const Slider = () => {
   const [data, setData] = useState<TPost[]>([]);
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch("https://blog-react.liara.run/api/collections/posts/records?expand=category&perPage=1");
+      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records?expand=category&perPage=1");
 
       const resJson = await res.json();
       setData(resJson.items);
@@ -20,7 +20,7 @@ const Slider = () => {
         <>
           <img
             className="w-full h-[300px] md:h-[600px] object-cover object-center rounded-lg"
-            src={"https://blog-react.liara.run/api/files/posts/" + item.id + "/" + item.image}
+            src={import.meta.env.VITE_IMAGE_URL + "/posts/" + item.id + "/" + item.image}
             alt={item.title}
           />
           <div className="flex flex-col gap-4 absolute left-14 -bottom-14 p-5 w-56 rounded-lg bg-white shadow-md">
