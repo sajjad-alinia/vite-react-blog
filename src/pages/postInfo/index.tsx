@@ -8,11 +8,10 @@ const PostInfo = () => {
   const [data, setData] = useState<TPost>({} as TPost);
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records/" + id + "?expand=category");
+      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records/" + id + "?expand=category,author");
 
       const resJson = await res.json();
       setData(resJson);
-      console.log(resJson);
     };
 
     getData();
