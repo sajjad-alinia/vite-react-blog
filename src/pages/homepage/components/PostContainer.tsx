@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PostItem from "../../../common/post/PostItem";
 import { TPost } from "../../../types/types";
 import PostItemSkeleton from "../../../common/post/PostItemSkeleton";
+import API from "../../../api/api";
 
 const PostContainer = () => {
   const [data, setData] = useState<TPost[]>([]);
@@ -10,11 +11,10 @@ const PostContainer = () => {
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records?expand=author,category");
-
-      const resJson = await res.json();
-      setData(resJson.items);
-      setIsLoading(false);
+      API.get("/posts/records?expand=author,category").then((data) => {
+        setData(data.data.items);
+        setIsLoading(false);
+      });
     };
 
     getData();

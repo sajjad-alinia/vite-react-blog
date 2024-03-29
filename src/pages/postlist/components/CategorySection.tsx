@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useLocation, useNavigate } from "react-router-dom";
 import { TCategory } from "../../../types/types";
+import API from "../../../api/api";
 
 const CategorySection = () => {
   const location = useLocation();
@@ -12,10 +13,10 @@ const CategorySection = () => {
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const res = await fetch(import.meta.env.VITE_API_URL + "/category/records");
-      const resJson = await res.json();
-      setData(resJson.items);
-      setIsLoading(false);
+      API.get("/category/records").then((res) => {
+        setData(res.data.items);
+        setIsLoading(false);
+      });
     };
 
     getData();

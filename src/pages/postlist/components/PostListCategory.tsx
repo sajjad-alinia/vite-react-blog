@@ -3,22 +3,28 @@ import { TPost } from "../../../types/types";
 import PostItem from "../../../common/post/PostItem";
 import PostItemSkeleton from "../../../common/post/PostItemSkeleton";
 import { useLocation } from "react-router-dom";
+import API from "../../../api/api";
 
 const PostListCategory = () => {
   const location = useLocation();
   const categoryId = new URLSearchParams(location.search).get("category");
   const [data, setData] = useState<TPost[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      let url = import.meta.env.VITE_API_URL + "/posts/records?expand=category,author";
-      if (categoryId && categoryId != "all") url += "&filter=(category.id='" + categoryId + "')";
-      const res = await fetch(url);
+      const params = {
+        expand: "category,author",
+        filter: "",
+      };
 
-      const resJson = await res.json();
-      setData(resJson.items);
-      setIsLoading(false);
+      if (categoryId && categoryId != "all") params.filter = "(category.id='" + categoryId + "')";
+
+      API.get("/posts/records", { params }).then((res) => {
+        setData(res.data.items);
+        setIsLoading(false);
+      });
     };
 
     getData();

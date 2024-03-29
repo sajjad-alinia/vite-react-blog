@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { TPost } from "../../../types/types";
 import Skeleton from "react-loading-skeleton";
+import API from "../../../api/api";
 
 const Slider = () => {
   const [data, setData] = useState<TPost[]>([]);
@@ -9,11 +10,10 @@ const Slider = () => {
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records?expand=category&perPage=1");
-
-      const resJson = await res.json();
-      setData(resJson.items);
-      setIsLoading(false);
+      API.get("/posts/records", { params: { expand: "category", perPage: 1 } }).then((res) => {
+        setData(res.data.items);
+        setIsLoading(false);
+      });
     };
 
     getData();

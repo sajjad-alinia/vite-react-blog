@@ -3,19 +3,20 @@ import { useParams } from "react-router-dom";
 import { TPost } from "../../types/types";
 import PostInfoContainer from "./components/PostInfoContainer";
 import PostInfoContainerSkeleton from "./components/PostInfoContainerSkeleton";
+import API from "../../api/api";
 
 const PostInfo = () => {
   const { id } = useParams();
   const [data, setData] = useState<TPost>({} as TPost);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const res = await fetch(import.meta.env.VITE_API_URL + "/posts/records/" + id + "?expand=category,author");
-
-      const resJson = await res.json();
-      setData(resJson);
-      setIsLoading(false);
+      API.get("/posts/records/" + id, { params: { expand: "category,author" } }).then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      });
     };
 
     getData();
