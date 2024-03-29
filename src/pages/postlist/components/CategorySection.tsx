@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TCategory } from "../../../types/types";
 
 const CategorySection = () => {
@@ -29,14 +29,17 @@ const CategorySection = () => {
     navigate({ search: newSearch });
   };
 
-  const activeCategory = (id: string) => {
-    const shareClass = "bg-blue-700 transition-all text-white rounded-md p-2 px-4 cursor-pointer shadow-sm opacity-60";
-    if (currentCategoryId === id) {
-      return shareClass + "opacity-100";
-    }
+  const activeCategory = useCallback(
+    (id: string) => {
+      const shareClass = "bg-blue-700 transition-all text-white rounded-md p-2 px-4 cursor-pointer shadow-sm opacity-60";
+      if (currentCategoryId === id) {
+        return shareClass + "opacity-100";
+      }
 
-    return shareClass;
-  };
+      return shareClass;
+    },
+    [currentCategoryId]
+  );
 
   return (
     <div className="centering gap-6 ">
