@@ -23,8 +23,8 @@ const Slider = () => {
     <div className="flex relative w-full">
       {isLoading && <SliderSkeleton />}
       {!isLoading &&
-        data.map((item) => (
-          <>
+        data.map((item, index) => (
+          <div className="flex w-full" key={index}>
             <img
               className="w-full h-[200px] md:h-[400px] object-cover object-center rounded-lg"
               src={import.meta.env.VITE_IMAGE_URL + "/posts/" + item.id + "/" + item.image}
@@ -34,7 +34,7 @@ const Slider = () => {
               <span className="bg-blue-500 text-white py-1 px-4 w-fit rounded-md text-sm">{item.expand.category[0].title}</span>
               {item.title}
             </div>
-          </>
+          </div>
         ))}
     </div>
   );

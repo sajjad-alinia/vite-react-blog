@@ -1,4 +1,3 @@
-import Skeleton from "react-loading-skeleton";
 import { TPost } from "../../../types/types";
 import AuthorSection from "./AuthorSection";
 
@@ -13,9 +12,6 @@ const PostInfoContainer = ({ id, image, title, expand, content }: TPostContainer
           src={import.meta.env.VITE_IMAGE_URL + "/posts/" + id + "/" + image}
           alt={title}
           className="w-full h-[400px] object-cover object-center rounded-lg"
-          onLoad={() => {
-            <Skeleton height={200} width={200} />;
-          }}
         />
       )}
       <p dangerouslySetInnerHTML={{ __html: content }}>{}</p>
