@@ -3,7 +3,7 @@ import { TAuthor } from "../../../types/types";
 
 const AuthorSection = ({ id, name, created, avatar }: TAuthor) => {
   return (
-    <div className="flex-start-center relative gap-4 p-5 pt-9 bg-slate-300 rounded-xl w-full shadow-sm">
+    <div className="flex-start-center relative gap-4 p-5 pt-9 bg-slate-300 dark:bg-slate-600 dark:text-white rounded-xl w-full shadow-sm">
       <img
         className="object-cover object-center rounded-full w-32 h-32"
         src={import.meta.env.VITE_IMAGE_URL + "/users/" + id + "/" + avatar}

@@ -21,7 +21,7 @@ const PostContainer = () => {
   }, []);
   return (
     <div className="flex flex-col gap-4">
-      <span className="text-base font-bold">Latest Post</span>
+      <span className="text-base font-bold dark:text-white">Latest Post</span>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         {isLoading && <PostItemSkeleton count={4} />}
         {data.map((item, index) => (
