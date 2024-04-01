@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { LogoIcon } from "../../assets/icons";
 import SearchBar from "./components/SearchBar";
 import ThemeToggler from "./components/ThemeToggler";
+import LngToggler from "./components/LngToggler";
 
 const Navbar = () => {
   return (
@@ -24,6 +25,7 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-4">
+        <LngToggler />
         <SearchBar />
         <ThemeToggler />
       </div>

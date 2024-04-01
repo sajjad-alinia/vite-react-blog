@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import { RouterProvider } from "react-router-dom";
-import router from "./router";
 import "react-loading-skeleton/dist/skeleton.css";
-import { SkeletonTheme } from "react-loading-skeleton";
+import { RouterProvider } from "react-router-dom";
+import App from "./App";
+import "./index.css";
+import router from "./router";
+import "./i18n";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <SkeletonTheme>
+    <App>
       <RouterProvider router={router} />
-    </SkeletonTheme>
+    </App>
   </React.StrictMode>
 );
