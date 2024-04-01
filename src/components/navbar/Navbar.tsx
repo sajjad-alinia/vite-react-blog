@@ -25,8 +25,8 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-4">
-        <LngToggler />
         <SearchBar />
+        <LngToggler />
         <ThemeToggler />
       </div>
     </nav>

@@ -51,7 +51,7 @@ const ThemeToggler = () => {
 
   return (
     <div>
-      <div className="flex gap-2 text-black bg-slate-200 dark:bg-slate-700 p-2 rounded-md">
+      <div className="flex gap-2 text-black bg-slate-200 dark:bg-slate-600 p-2 rounded-md">
         {themeOption.map((item) => (
           <button
             key={item.name}
