@@ -45,7 +45,7 @@ const CategorySection = () => {
   );
 
   return (
-    <div className="centering gap-6 ">
+    <div className="centering flex-wrap gap-6 ">
       {!isLoading && (
         <div onClick={() => changeHandler("all")} className={activeCategory("all")}>
           {t("PostList.all")}

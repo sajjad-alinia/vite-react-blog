@@ -8,25 +8,27 @@ import { useTranslation } from "react-i18next";
 const Navbar = () => {
   const { t } = useTranslation();
   return (
-    <nav className="flex-between-center py-5 border-b ">
-      <div className="centering gap-2 dark:text-white">
-        <LogoIcon />
-        <div className="hidden md:block">
-          <span>meta</span>
-          <span className="font-bold">blog</span>
+    <nav className="flex flex-col gap-4 md:flex-row md:flex-between-center py-5 border-b ">
+      <div className="flex gap-2 md:gap-6">
+        <div className="centering gap-2 dark:text-white">
+          <LogoIcon />
+          <div className="">
+            <span>meta</span>
+            <span className="font-bold">blog</span>
+          </div>
+        </div>
+
+        <div className="centering gap-4 p-1 dark:text-white">
+          <NavLink to={"/"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
+            {t("Navbar.home")}
+          </NavLink>
+          <NavLink to={"/postlist"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
+            {t("Navbar.posts")}
+          </NavLink>
         </div>
       </div>
 
-      <div className="centering gap-4 p-1 dark:text-white">
-        <NavLink to={"/"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
-          {t("Navbar.home")}
-        </NavLink>
-        <NavLink to={"/postlist"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
-          {t("Navbar.posts")}
-        </NavLink>
-      </div>
-
-      <div className="flex gap-4">
+      <div className="flex-between-center md:flex gap-4">
         <SearchBar />
         <LngToggler />
         <ThemeToggler />
