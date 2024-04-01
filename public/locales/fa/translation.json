@@ -1,3 +1,13 @@
 {
-  "hello": "سلاممم"
+  "Navbar": {
+    "home": "خانه",
+    "posts": "پست ها",
+    "search": "جستجو"
+  },
+  "HomePage": {
+    "latestPosts": "آخرین پست ها"
+  },
+  "PostList": {
+    "all": "همه"
+  }
 }

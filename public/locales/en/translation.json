@@ -1,3 +1,13 @@
 {
-  "hello": "helloooo"
+  "Navbar": {
+    "home": "Home",
+    "posts": "Posts",
+    "search": "Search"
+  },
+  "HomePage": {
+    "latestPosts": "Latest Posts"
+  },
+  "PostList": {
+    "all": "All"
+  }
 }

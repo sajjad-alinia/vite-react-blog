@@ -3,8 +3,10 @@ import { LogoIcon } from "../../assets/icons";
 import SearchBar from "./components/SearchBar";
 import ThemeToggler from "./components/ThemeToggler";
 import LngToggler from "./components/LngToggler";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   return (
     <nav className="flex-between-center py-5 border-b ">
       <div className="centering gap-2 dark:text-white">
@@ -17,10 +19,10 @@ const Navbar = () => {
 
       <div className="centering gap-4 p-1 dark:text-white">
         <NavLink to={"/"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
-          Home
+          {t("Navbar.home")}
         </NavLink>
         <NavLink to={"/postlist"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
-          Posts
+          {t("Navbar.posts")}
         </NavLink>
       </div>
 

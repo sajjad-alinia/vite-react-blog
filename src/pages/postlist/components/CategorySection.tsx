@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Skeleton from "react-loading-skeleton";
 import { useLocation, useNavigate } from "react-router-dom";
-import { TCategory } from "../../../types/types";
 import API from "../../../api/api";
+import { TCategory } from "../../../types/types";
 
 const CategorySection = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [data, setData] = useState<TCategory[]>([]);
@@ -46,7 +48,7 @@ const CategorySection = () => {
     <div className="centering gap-6 ">
       {!isLoading && (
         <div onClick={() => changeHandler("all")} className={activeCategory("all")}>
-          All
+          {t("PostList.all")}
         </div>
       )}
       {!isLoading &&
@@ -57,10 +59,10 @@ const CategorySection = () => {
         ))}
       {isLoading && (
         <div className="flex gap-6">
-          <Skeleton className="inline" width={70} height={40} />
-          <Skeleton className="inline" width={70} height={40} />
-          <Skeleton className="inline" width={70} height={40} />
-          <Skeleton className="inline" width={70} height={40} />
+          <Skeleton width={70} height={40} />
+          <Skeleton width={70} height={40} />
+          <Skeleton width={70} height={40} />
+          <Skeleton width={70} height={40} />
         </div>
       )}
     </div>

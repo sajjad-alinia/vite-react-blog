@@ -1,12 +1,8 @@
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { SkeletonTheme } from "react-loading-skeleton";
 
 function App({ children }: { children: ReactNode }) {
-  return (
-    <SkeletonTheme>
-      <Suspense fallback="...is loading">{children}</Suspense>
-    </SkeletonTheme>
-  );
+  return <SkeletonTheme>{children}</SkeletonTheme>;
 }
 
 export default App;

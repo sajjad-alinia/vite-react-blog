@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import i18n from "../../../i18n";
 
 const LngToggler = () => {
@@ -14,6 +14,10 @@ const LngToggler = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [currentLng, setCurrentLng] = useState<{ nativeName: string; image: string }>(lngs[i18n.resolvedLanguage || "en"]);
 
+  useEffect(() => {
+    document.body.dir = i18n.dir();
+  }, [currentLng]);
+
   return (
     <div className="relative">
       <button
@@ -24,14 +28,16 @@ const LngToggler = () => {
         <span>{currentLng.nativeName}</span>
       </button>
       <div
-        className={`flex flex-col gap-4 absolute top-11 right-0 rounded-md bg-slate-600 w-28 p-3 ${
+        className={`flex flex-col gap-3 z-10 absolute top-11 ltr:right-0 rtl:left-0 rounded-md bg-slate-300 dark:bg-slate-600 w-28 p-2 ${
           open ? "fade-in" : "fade-out"
         }`}
       >
         {Object.keys(lngs).map((lng) => (
           <button
             key={lng}
-            className={`flex gap-2 text-white ${i18n.resolvedLanguage === lng ? "font-bold" : ""}`}
+            className={`flex gap-2 hover:dark:bg-slate-500 hover:bg-slate-400 p-2 rounded-md  dark:text-white ${
+              i18n.resolvedLanguage === lng ? "dark:bg-slate-500 bg-slate-400" : ""
+            }`}
             type="submit"
             onClick={() => {
               i18n.changeLanguage(lng), setOpen(false), setCurrentLng(lngs[lng]);
