@@ -29,6 +29,12 @@ const Navbar = () => {
       </div>
 
       <div className="flex-between-center md:flex gap-4">
+        <NavLink
+          to={"/auth/login"}
+          className={`dark:text-white p-2 bg-blue-600 rounded-md px-4 hover:bg-blue-700 transition-all`}
+        >
+          login
+        </NavLink>
         <SearchBar />
         <LngToggler />
         <ThemeToggler />
