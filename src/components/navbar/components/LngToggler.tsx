@@ -12,19 +12,26 @@ const LngToggler = () => {
   };
 
   const [open, setOpen] = useState<boolean>(false);
-  const [currentLng, setCurrentLng] = useState<{ nativeName: string; image: string }>(lngs[i18n.resolvedLanguage || "en"]);
+  const [currentLng, setCurrentLng] = useState<{
+    nativeName: string;
+    image: string;
+  }>(lngs[i18n.resolvedLanguage || "en"]);
 
   useEffect(() => {
     document.body.dir = i18n.dir();
   }, [currentLng]);
 
   return (
-    <div className="relative">
+    <div className="relative min-w-24">
       <button
         className="flex gap-2 rounded-md dark:text-white p-2 bg-slate-200 dark:bg-slate-600 "
         onClick={() => setOpen(!open)}
       >
-        <img className="w-5 h-5 object-center" src={currentLng.image} alt={currentLng.nativeName} />
+        <img
+          className="w-5 h-5 object-center"
+          src={currentLng.image}
+          alt={currentLng.nativeName}
+        />
         <span>{currentLng.nativeName}</span>
       </button>
       <div
@@ -36,14 +43,22 @@ const LngToggler = () => {
           <button
             key={lng}
             className={`flex gap-2 hover:dark:bg-slate-500 hover:bg-slate-400 p-2 rounded-md  dark:text-white ${
-              i18n.resolvedLanguage === lng ? "dark:bg-slate-500 bg-slate-400" : ""
+              i18n.resolvedLanguage === lng
+                ? "dark:bg-slate-500 bg-slate-400"
+                : ""
             }`}
             type="submit"
             onClick={() => {
-              i18n.changeLanguage(lng), setOpen(false), setCurrentLng(lngs[lng]);
+              i18n.changeLanguage(lng),
+                setOpen(false),
+                setCurrentLng(lngs[lng]);
             }}
           >
-            <img className="w-5 h-5 object-center" src={lngs[lng].image} alt={lngs[lng].nativeName} />
+            <img
+              className="w-5 h-5 object-center"
+              src={lngs[lng].image}
+              alt={lngs[lng].nativeName}
+            />
             <span>{lngs[lng].nativeName}</span>
           </button>
         ))}

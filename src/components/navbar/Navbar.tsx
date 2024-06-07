@@ -19,25 +19,39 @@ const Navbar = () => {
         </div>
 
         <div className="centering gap-4 p-1 dark:text-white">
-          <NavLink to={"/"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive ? "p-2 border-b-2 border-blue-700" : "p-2"
+            }
+          >
             {t("Navbar.home")}
           </NavLink>
-          <NavLink to={"/postlist"} className={({ isActive }) => (isActive ? "p-2 border-b-2 border-blue-700" : "p-2")}>
+          <NavLink
+            to={"/postlist"}
+            className={({ isActive }) =>
+              isActive ? "p-2 border-b-2 border-blue-700" : "p-2"
+            }
+          >
             {t("Navbar.posts")}
           </NavLink>
         </div>
       </div>
 
-      <div className="flex-between-center md:flex gap-4">
-        <NavLink
-          to={"/auth/login"}
-          className={`dark:text-white p-2 bg-blue-600 rounded-md px-4 hover:bg-blue-700 transition-all`}
-        >
-          login
-        </NavLink>
-        <SearchBar />
-        <LngToggler />
-        <ThemeToggler />
+      <div className="flex flex-col md:flex-end-center md:flex-row gap-4 w-full">
+        <div className="flex gap-4">
+          <SearchBar />
+        </div>
+        <div className="flex gap-4">
+          <LngToggler />
+          <ThemeToggler />
+          <NavLink
+            to={"/auth/login"}
+            className={`dark:text-white p-2 text-center w-full bg-blue-600 rounded-md px-4 hover:bg-blue-700 transition-all`}
+          >
+            login
+          </NavLink>
+        </div>
       </div>
     </nav>
   );

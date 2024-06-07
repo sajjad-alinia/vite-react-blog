@@ -5,7 +5,7 @@ function SearchBar() {
   const { t } = useTranslation();
 
   return (
-    <div className="w-32 md:w-48">
+    <div className="w-full">
       <Input placeholder={t("Navbar.search")} />
     </div>
   );
