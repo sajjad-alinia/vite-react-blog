@@ -3,13 +3,9 @@ import { LogoIcon } from "../../../assets/icons";
 import Input from "../../../common/utils/Input";
 
 const LogIn = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log(data);
   };
 
@@ -20,7 +16,12 @@ const LogIn = () => {
           <LogoIcon />
         </div>
         <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-          <Input variant={"form"} {...(register("email"), { required: true })} title="Email" name="email" />
+          <Input
+            variant={"form"}
+            {...(register("email"), { required: true })}
+            title="Email"
+            name="email"
+          />
           <Input
             variant={"form"}
             {...(register("password"), { required: true })}
